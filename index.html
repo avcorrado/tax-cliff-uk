@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The £100,000 Cliff: UK Tax Explorer 2026/27</title>
-  <meta name="description" content="A step by step walkthrough of the UK £100,000 tax cliff. Enter your salary, children and pension and see the 62% effective tax rate and the childcare cliff in your own numbers.">
+  <meta name="description" content="Answer a few quick questions and see what the UK £100,000 tax cliff does to your pay, your childcare help and your pension, with a personal plan for what to do about it.">
   <meta name="color-scheme" content="light dark">
   <meta property="og:title" content="The £100,000 Cliff: UK Tax Explorer">
-  <meta property="og:description" content="Earn £2 more, lose £1 of allowance. Earn £1 more, lose thousands in childcare help. See your own numbers for 2026/27.">
+  <meta property="og:description" content="Earn £2 more, lose £1 of allowance. Earn £1 more, lose thousands in childcare help. Check your own numbers for 2026/27.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b4132a'/%3E%3Cpath d='M10 44h26V22h8v10h10' fill='none' stroke='%23fff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <a class="skip" href="#explorer">Skip to the explorer</a>
+  <a class="skip" href="#explorer">Skip to the questions</a>
 
   <header class="site-header">
     <div class="wrap bar">
@@ -35,7 +35,7 @@
       <div class="wrap">
         <p class="eyebrow">UK income tax and benefits, tax year 2026/27</p>
         <h1>The £100,000 cliff</h1>
-        <p class="lede">Between £100,000 and £125,140 every extra pound you earn is taxed at an effective 62% in England. For parents, earning a single pound over the line can switch off thousands of pounds of childcare help. Answer a few quick questions and see what it does to you.</p>
+        <p class="lede">Between £100,000 and £125,140 every extra pound you earn is taxed at an effective 62% in England. For parents, earning a single pound over the line can switch off thousands of pounds of childcare help. Answer a few quick questions and get a personal plan for what to do about it.</p>
         <ul class="hero-stats">
           <li>
             <b class="big">62%</b>
@@ -55,7 +55,7 @@
           </li>
         </ul>
         <div class="hero-actions">
-          <a class="btn primary" href="#explorer">Walk me through my numbers</a>
+          <a class="btn primary" href="#explorer">Check my numbers</a>
           <a class="btn" href="#how">How the cliff works</a>
         </div>
       </div>
@@ -67,222 +67,239 @@
 
     <section id="explorer" class="explorer" aria-labelledby="explorerTitle">
       <div class="wrap">
-        <div class="section-head">
-          <h2 id="explorerTitle">See what it does to you</h2>
-          <p>Six quick steps take you from your salary to the full picture. You can go back at any time, and at the end you can open all of the data.</p>
+        <div class="section-head center">
+          <h2 id="explorerTitle">Check your own numbers</h2>
+          <p>A few quick questions, one at a time. It takes about two minutes and nothing you enter leaves your device.</p>
         </div>
 
-        <div class="guide card" id="guide">
-          <div class="guide-top">
-            <ol class="progress" id="progress" aria-label="Steps">
-              <li><button type="button" data-goto="1"><span class="dot">1</span><span class="lbl">Your pay</span></button></li>
-              <li><button type="button" data-goto="2"><span class="dot">2</span><span class="lbl">Your tax</span></button></li>
-              <li><button type="button" data-goto="3"><span class="dot">3</span><span class="lbl">Family</span></button></li>
-              <li><button type="button" data-goto="4"><span class="dot">4</span><span class="lbl">The cliff</span></button></li>
-              <li><button type="button" data-goto="5"><span class="dot">5</span><span class="lbl">Pension</span></button></li>
-              <li><button type="button" data-goto="6"><span class="dot">6</span><span class="lbl">Summary</span></button></li>
-            </ol>
-            <div class="answer-row" id="answerRow" hidden></div>
-            <details class="examples">
-              <summary>Or start from an example</summary>
-              <div class="presets" role="group" aria-label="Example scenarios">
-                <button type="button" class="chip" data-preset="parents">Parent of two under 5s</button>
-                <button type="button" class="chip" data-preset="escape">Pension escape hatch</button>
-                <button type="button" class="chip" data-preset="nokids">No children, just the 62%</button>
-                <button type="button" class="chip" data-preset="plan2">Plan 2 graduate</button>
-                <button type="button" class="chip" data-preset="scotland">Scotland</button>
-                <button type="button" class="chip" data-preset="couple">Couple, partner on £40,000</button>
-                <button type="button" class="chip" data-preset="both">Two earners on £99,000</button>
-              </div>
-            </details>
+        <div class="flow card" id="flow">
+          <div class="flow-top">
+            <button type="button" class="back-btn" id="flowBack" aria-label="Go back">←</button>
+            <div class="flow-progress" id="flowProgress" role="progressbar" aria-label="Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="flowBarFill"></span></div>
+            <span class="flow-count" id="flowCount">Question 1 of 6</span>
           </div>
 
-          <div class="steps" id="steps">
-            <section class="step" data-step="1" aria-labelledby="s1t">
-              <div class="step-q">
-                <p class="step-kicker">Step 1 of 6</p>
-                <h3 id="s1t" class="step-title" tabindex="-1">What is your gross salary?</h3>
-                <p class="muted">Your pay before tax, for a whole year.</p>
-                <div class="money-input big-input"><span class="pound" aria-hidden="true">£</span><input data-money="salary" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" aria-label="Gross salary in pounds"></div>
-                <div data-mount="salary-range"></div>
-                <div class="quick" role="group" aria-label="Quick salaries">
-                  <button type="button" class="chip small" data-set-salary="60000">£60k</button>
-                  <button type="button" class="chip small" data-set-salary="80000">£80k</button>
-                  <button type="button" class="chip small" data-set-salary="95000">£95k</button>
-                  <button type="button" class="chip small" data-set-salary="105000">£105k</button>
-                  <button type="button" class="chip small" data-set-salary="115000">£115k</button>
-                  <button type="button" class="chip small" data-set-salary="130000">£130k</button>
-                </div>
-                <p class="hint">Not in England, or have a student loan or a partner? Open <button type="button" class="linklike" data-open-advanced>advanced settings</button>.</p>
+          <div class="screens">
+            <section class="screen" data-screen="salary" aria-labelledby="q-salary">
+              <h3 class="q" id="q-salary" tabindex="-1">How much do you earn in a year?</h3>
+              <p class="why">Your pay before tax. Include any regular bonus.</p>
+              <div class="money-input big-input"><span class="pound" aria-hidden="true">£</span><input data-money="salary" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" aria-labelledby="q-salary"></div>
+              <div data-mount="salary-range"></div>
+              <div class="quick" role="group" aria-label="Quick salaries">
+                <button type="button" class="chip small" data-set-salary="60000">£60k</button>
+                <button type="button" class="chip small" data-set-salary="80000">£80k</button>
+                <button type="button" class="chip small" data-set-salary="95000">£95k</button>
+                <button type="button" class="chip small" data-set-salary="105000">£105k</button>
+                <button type="button" class="chip small" data-set-salary="115000">£115k</button>
+                <button type="button" class="chip small" data-set-salary="130000">£130k</button>
               </div>
-              <div class="step-viz" id="viz1" aria-live="off"></div>
+              <div class="insight-card" id="insSalary"></div>
             </section>
 
-            <section class="step" data-step="2" aria-labelledby="s2t" hidden>
-              <div class="step-q">
-                <p class="step-kicker">Step 2 of 6</p>
-                <h3 id="s2t" class="step-title" tabindex="-1">Where does your pay actually go?</h3>
-                <p class="muted">No questions on this one. These are your own numbers, worked out from your salary.</p>
-                <div class="explain">
-                  <p><b>The Personal Allowance</b> is the first £12,570 you earn tax free. Every £2 of income above £100,000 takes £1 of it away, until it is gone at £125,140.</p>
-                  <p>That lost allowance is taxed too, which is why the next pound costs far more than the headline rate.</p>
-                </div>
+            <section class="screen" data-screen="kids" aria-labelledby="q-kids" hidden>
+              <h3 class="q" id="q-kids" tabindex="-1">Do you have children?</h3>
+              <p class="why">Child Benefit and childcare help both depend on your income, so children change the picture a lot.</p>
+              <div class="options" role="radiogroup" aria-labelledby="q-kids">
+                <button type="button" class="option" role="radio" data-kids="no" aria-checked="false"><b>No children</b><span>The childcare cliff does not apply to you. The 62% rate still might.</span></button>
+                <button type="button" class="option" role="radio" data-kids="yes" aria-checked="false"><b>Yes, I have children</b><span>We will ask their ages and what you pay for childcare.</span></button>
               </div>
-              <div class="step-viz" id="viz2" aria-live="off"></div>
+              <div class="insight-card" id="insKids"></div>
             </section>
 
-            <section class="step" data-step="3" aria-labelledby="s3t" hidden>
-              <div class="step-q">
-                <p class="step-kicker">Step 3 of 6</p>
-                <h3 id="s3t" class="step-title" tabindex="-1">Do you have children?</h3>
-                <p class="muted">Add each child so we can work out Child Benefit and childcare help. Skip this if you have none.</p>
-                <div class="add-chips" role="group" aria-label="Add a child">
-                  <button type="button" class="chip small" data-add-band="baby">+ Baby</button>
-                  <button type="button" class="chip small" data-add-band="toddler">+ Toddler</button>
-                  <button type="button" class="chip small" data-add-band="preschool">+ Age 3 to 4</button>
-                  <button type="button" class="chip small" data-add-band="school">+ School age</button>
-                  <button type="button" class="chip small" data-add-band="teen">+ Age 12 to 15</button>
-                </div>
-                <div id="childList" class="child-list"></div>
+            <section class="screen" data-screen="ages" aria-labelledby="q-ages" hidden>
+              <h3 class="q" id="q-ages" tabindex="-1">How old are your children?</h3>
+              <p class="why">Tap once for each child. Their age decides which childcare help you can get.</p>
+              <div class="add-chips" role="group" aria-label="Add a child">
+                <button type="button" class="chip" data-add-band="baby">+ Baby</button>
+                <button type="button" class="chip" data-add-band="toddler">+ Toddler</button>
+                <button type="button" class="chip" data-add-band="preschool">+ Age 3 to 4</button>
+                <button type="button" class="chip" data-add-band="school">+ School age</button>
+                <button type="button" class="chip" data-add-band="teen">+ Age 12 to 15</button>
               </div>
-              <div class="step-viz" id="viz3" aria-live="off"></div>
+              <div id="ageList" class="child-list"></div>
+              <div class="insight-card" id="insAges"></div>
             </section>
 
-            <section class="step" data-step="4" aria-labelledby="s4t" hidden>
-              <div class="step-q">
-                <p class="step-kicker">Step 4 of 6</p>
-                <h3 id="s4t" class="step-title" tabindex="-1">What happens when you cross £100,000?</h3>
-                <p class="muted">Slide your salary across the line and watch your money. Click or drag on the chart too.</p>
-                <div class="money-input big-input"><span class="pound" aria-hidden="true">£</span><input data-money="salary" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" aria-label="Gross salary in pounds"></div>
-                <div data-mount="salary-range"></div>
-                <div class="quick">
-                  <button type="button" class="chip small" data-jump="below">Just below the cliff</button>
-                  <button type="button" class="chip small danger" data-jump="above">Just above</button>
-                </div>
-                <div id="viz4Top"></div>
-              </div>
-              <div class="step-viz">
-                <div id="chartHost4"></div>
-                <ul class="legend" id="legend4"></ul>
-                <div id="viz4Bottom"></div>
-              </div>
-            </section>
-
-            <section class="step" data-step="5" aria-labelledby="s5t" hidden>
-              <div class="step-q">
-                <p class="step-kicker">Step 5 of 6</p>
-                <h3 id="s5t" class="step-title" tabindex="-1">Can a pension get you out?</h3>
-                <p class="muted">Pick the percentage of your gross salary that goes into your pension. Employer money is not counted here.</p>
-                <div class="pct-row">
-                  <div class="money-input pct big-input"><input data-pct="pensionPct" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Pension contribution as a percentage of salary"><span class="unit" aria-hidden="true">%</span></div>
-                  <span class="pct-of" id="pctOf"></span>
-                </div>
-                <input class="plain-range" data-range="pensionPct" type="range" min="0" max="60" step="0.5" aria-label="Pension percentage slider">
-                <div class="quick">
-                  <button type="button" class="btn small primary" id="fixPension">Just enough to reach £100,000</button>
-                  <button type="button" class="btn small" id="clearPension">Clear</button>
-                </div>
-                <div id="viz5Top"></div>
-              </div>
-              <div class="step-viz">
-                <div id="chartHost5"></div>
-                <ul class="legend" id="legend5"></ul>
-                <div id="viz5Bottom"></div>
-              </div>
-            </section>
-
-            <section class="step" data-step="6" aria-labelledby="s6t" hidden>
-              <div class="step-q">
-                <p class="step-kicker">Step 6 of 6</p>
-                <h3 id="s6t" class="step-title" tabindex="-1">Your picture</h3>
-                <p class="muted">That is the short version. Open the full data to see every chart, table and breakdown behind it.</p>
-                <button type="button" class="btn primary big" id="showAll">Show me all the data</button>
-                <p class="hint">You can change anything afterwards using the buttons at the top.</p>
-              </div>
-              <div class="step-viz" id="viz6" aria-live="off"></div>
-            </section>
-          </div>
-
-          <div class="guide-nav" id="guideNav">
-            <button type="button" class="btn" id="navBack">Back</button>
-            <button type="button" class="btn ghost" id="skipAll">Skip to all the data</button>
-            <button type="button" class="btn primary" id="navNext">Next</button>
-          </div>
-
-          <details class="advanced" id="advanced">
-            <summary>Advanced settings</summary>
-            <div class="adv-grid">
-              <div class="field">
-                <span class="label" id="regionLabel">Where you work</span>
-                <div class="choices" role="group" aria-labelledby="regionLabel">
-                  <button type="button" data-choice="region" data-value="england" aria-pressed="true">England</button>
-                  <button type="button" data-choice="region" data-value="scotland" aria-pressed="false">Scotland</button>
-                  <button type="button" data-choice="region" data-value="wales_ni" aria-pressed="false">Wales or NI</button>
-                </div>
-                <p class="hint" id="regionHint"></p>
-              </div>
-
-              <div class="field">
-                <label for="planSelect">Student loan</label>
-                <select id="planSelect" data-select="plan">
-                  <option value="none">No student loan</option>
-                  <option value="plan1">Plan 1 (threshold £26,900)</option>
-                  <option value="plan2">Plan 2 (threshold £29,385)</option>
-                  <option value="plan4">Plan 4, Scotland (threshold £33,795)</option>
-                  <option value="plan5">Plan 5 (threshold £25,000)</option>
-                </select>
-                <label class="check"><input type="checkbox" data-check="postgrad"><span>Also a Postgraduate loan (6% above £21,000)</span></label>
-              </div>
-
-              <div class="field">
-                <span class="label" id="partnerLabel">Partner</span>
-                <label class="check"><input type="checkbox" data-check="partnerOn"><span>I have a partner who works</span></label>
-                <div data-show-if="partnerOn" hidden>
-                  <label for="partnerInput">Partner's gross salary</label>
-                  <div class="money-input"><span class="pound" aria-hidden="true">£</span><input id="partnerInput" data-money="partnerSalary" type="text" inputmode="numeric" autocomplete="off" spellcheck="false"></div>
-                </div>
-                <p class="hint">Childcare help is lost if either of you is over £100,000. Child Benefit is clawed back against whoever earns more.</p>
-              </div>
-
-              <div class="field">
-                <span class="label" id="methodLabel">How your pension is paid</span>
-                <div class="choices" role="group" aria-labelledby="methodLabel">
-                  <button type="button" data-choice="method" data-value="sacrifice" aria-pressed="true">Salary sacrifice</button>
-                  <button type="button" data-choice="method" data-value="personal" aria-pressed="false">Personal pension or net pay</button>
-                </div>
-                <p class="hint" id="methodHint"></p>
-              </div>
-
-              <div class="field">
-                <label for="employerInput">Employer pension contribution</label>
-                <div class="money-input pct"><input id="employerInput" data-pct="employerPct" type="text" inputmode="decimal" autocomplete="off" spellcheck="false"><span class="unit" aria-hidden="true">% of salary</span></div>
-                <p class="hint">Does not change your adjusted net income. It only counts towards the £60,000 annual allowance.</p>
-              </div>
-
-              <div class="field">
-                <label for="giftInput">Gift Aid donations a year</label>
-                <div class="money-input"><span class="pound" aria-hidden="true">£</span><input id="giftInput" data-money="gift" type="text" inputmode="numeric" autocomplete="off" spellcheck="false"></div>
-                <p class="hint">The amount you hand over. The charity claims 25% on top, and the grossed up total reduces your adjusted net income.</p>
-              </div>
-
-              <div class="field">
-                <label for="weeksInput">Weeks of nursery a year</label>
+            <section class="screen" data-screen="childcare" aria-labelledby="q-childcare" hidden>
+              <h3 class="q" id="q-childcare" tabindex="-1">What do you pay for childcare each month?</h3>
+              <p class="why">Nursery, childminder or after school club, for each child. Not sure? Keep our estimate. You can change it later.</p>
+              <div id="costList" class="child-list"></div>
+              <div class="field weeks-field">
+                <label for="weeksInput">Weeks of childcare a year</label>
                 <div class="money-input"><input id="weeksInput" data-number="weeks" type="text" inputmode="numeric" autocomplete="off" spellcheck="false"><span class="unit" aria-hidden="true">weeks</span></div>
-                <p class="hint">Used to estimate nursery bills and value the funded hours.</p>
               </div>
-            </div>
-            <div class="btn-row">
-              <button type="button" class="btn small" id="shareLink">Copy a link to this scenario</button>
-              <button type="button" class="btn small ghost" id="resetAll">Start again</button>
-            </div>
-            <p class="hint" id="shareStatus" role="status"></p>
-          </details>
+              <div class="insight-card" id="insChildcare"></div>
+            </section>
+
+            <section class="screen" data-screen="pension" aria-labelledby="q-pension" hidden>
+              <h3 class="q" id="q-pension" tabindex="-1">How much of your salary goes into a pension?</h3>
+              <p class="why">The percentage taken from your pay each month. This is the biggest lever you have over the cliff. Not sure? Check your payslip. 5% is common.</p>
+              <div class="pct-row">
+                <div class="money-input pct big-input"><input data-pct="pensionPct" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-labelledby="q-pension"><span class="unit" aria-hidden="true">%</span></div>
+                <span class="pct-of" id="pctOf"></span>
+              </div>
+              <input class="plain-range" data-range="pensionPct" type="range" min="0" max="60" step="0.5" aria-label="Pension percentage slider">
+              <div class="quick" role="group" aria-label="Common pension percentages">
+                <button type="button" class="chip small" data-set-pct="0">None</button>
+                <button type="button" class="chip small" data-set-pct="3">3%</button>
+                <button type="button" class="chip small" data-set-pct="5">5%</button>
+                <button type="button" class="chip small" data-set-pct="8">8%</button>
+                <button type="button" class="chip small" data-set-pct="10">10%</button>
+                <button type="button" class="chip small" data-set-pct="15">15%</button>
+              </div>
+              <div class="field employer-field">
+                <label for="employerInput">Does your employer add to it? <span class="optional">Optional</span></label>
+                <div class="money-input pct"><input id="employerInput" data-pct="employerPct" type="text" inputmode="decimal" autocomplete="off" spellcheck="false"><span class="unit" aria-hidden="true">% of salary</span></div>
+              </div>
+              <div class="insight-card" id="insPension"></div>
+              <div class="viz-chart"><div id="chartHostP"></div><ul class="legend" id="legendP"></ul></div>
+            </section>
+
+            <section class="screen" data-screen="extras" aria-labelledby="q-extras" hidden>
+              <h3 class="q" id="q-extras" tabindex="-1">Anything else we should know?</h3>
+              <p class="why">All of this is optional. Tap anything that applies and we will ask a little more. Skip it and press Next if nothing does.</p>
+              <div class="toggles">
+                <div class="toggle-group">
+                  <button type="button" class="toggle" data-toggle="loan" aria-pressed="false"><span class="tick" aria-hidden="true"></span>I have a student loan</button>
+                  <div class="panel" data-panel="loan" hidden>
+                    <div class="field">
+                      <label for="planSelect">Which plan are you on?</label>
+                      <select id="planSelect" data-select="plan">
+                        <option value="none">Not sure yet</option>
+                        <option value="plan1">Plan 1 (threshold £26,900)</option>
+                        <option value="plan2">Plan 2 (threshold £29,385)</option>
+                        <option value="plan4">Plan 4, Scotland (threshold £33,795)</option>
+                        <option value="plan5">Plan 5 (threshold £25,000)</option>
+                      </select>
+                      <label class="check"><input type="checkbox" data-check="postgrad"><span>I also have a Postgraduate loan</span></label>
+                    </div>
+                    <div class="field">
+                      <label for="loanBalance">What is the balance now? <span class="optional">Optional</span></label>
+                      <div class="money-input"><span class="pound" aria-hidden="true">£</span><input id="loanBalance" data-money="loanBalance" type="text" inputmode="numeric" autocomplete="off" spellcheck="false"></div>
+                      <p class="hint">Find it in your Student Loans Company account. We use it to show when your repayments stop and your pay goes up.</p>
+                    </div>
+                    <div class="field">
+                      <label for="loanRate">Interest rate <span class="optional">Optional</span></label>
+                      <div class="money-input pct"><input id="loanRate" data-pct="loanRate" type="text" inputmode="decimal" autocomplete="off" spellcheck="false"><span class="unit" aria-hidden="true">%</span></div>
+                      <p class="hint">Not sure? We assume about 6% for Plan 2 and 4% for the others.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="toggle-group">
+                  <button type="button" class="toggle" data-toggle="partner" aria-pressed="false"><span class="tick" aria-hidden="true"></span>I have a partner who works</button>
+                  <div class="panel" data-panel="partner" hidden>
+                    <div class="field">
+                      <label for="partnerInput">Your partner's yearly salary</label>
+                      <div class="money-input"><span class="pound" aria-hidden="true">£</span><input id="partnerInput" data-money="partnerSalary" type="text" inputmode="numeric" autocomplete="off" spellcheck="false"></div>
+                      <p class="hint">Childcare help is lost if either of you is over £100,000. Child Benefit is clawed back against whoever earns more.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="toggle-group">
+                  <button type="button" class="toggle" data-toggle="region" aria-pressed="false"><span class="tick" aria-hidden="true"></span>I do not work in England</button>
+                  <div class="panel" data-panel="region" hidden>
+                    <div class="field">
+                      <span class="label" id="regionLabel">Where do you work?</span>
+                      <div class="choices" role="group" aria-labelledby="regionLabel">
+                        <button type="button" data-choice="region" data-value="england" aria-pressed="true">England</button>
+                        <button type="button" data-choice="region" data-value="scotland" aria-pressed="false">Scotland</button>
+                        <button type="button" data-choice="region" data-value="wales_ni" aria-pressed="false">Wales or Northern Ireland</button>
+                      </div>
+                      <p class="hint" id="regionHint"></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="toggle-group">
+                  <button type="button" class="toggle" data-toggle="gift" aria-pressed="false"><span class="tick" aria-hidden="true"></span>I give to charity with Gift Aid</button>
+                  <div class="panel" data-panel="gift" hidden>
+                    <div class="field">
+                      <label for="giftInput">How much do you give in a year?</label>
+                      <div class="money-input"><span class="pound" aria-hidden="true">£</span><input id="giftInput" data-money="gift" type="text" inputmode="numeric" autocomplete="off" spellcheck="false"></div>
+                      <p class="hint">The amount you hand over. The charity claims 25% on top, and the grossed up total lowers the income HMRC counts.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="toggle-group">
+                  <button type="button" class="toggle" data-toggle="method" aria-pressed="false"><span class="tick" aria-hidden="true"></span>My pension is not salary sacrifice</button>
+                  <div class="panel" data-panel="method" hidden>
+                    <div class="field">
+                      <span class="label" id="methodLabel">How is your pension paid?</span>
+                      <div class="choices" role="group" aria-labelledby="methodLabel">
+                        <button type="button" data-choice="method" data-value="sacrifice" aria-pressed="true">Salary sacrifice</button>
+                        <button type="button" data-choice="method" data-value="personal" aria-pressed="false">Personal pension or net pay</button>
+                      </div>
+                      <p class="hint" id="methodHint"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="insight-card" id="insExtras"></div>
+            </section>
+          </div>
+
+          <div class="flow-nav">
+            <button type="button" class="btn primary big wide" id="flowNext">Next</button>
+            <p class="hint" id="flowHint"></p>
+          </div>
+        </div>
+
+        <details class="examples">
+          <summary>Just want to see an example?</summary>
+          <div class="presets" role="group" aria-label="Example scenarios">
+            <button type="button" class="chip" data-preset="parents">Parent of two under 5s</button>
+            <button type="button" class="chip" data-preset="escape">Pension escape hatch</button>
+            <button type="button" class="chip" data-preset="nokids">No children, just the 62%</button>
+            <button type="button" class="chip" data-preset="plan2">Plan 2 graduate</button>
+            <button type="button" class="chip" data-preset="scotland">Scotland</button>
+            <button type="button" class="chip" data-preset="couple">Couple, partner on £40,000</button>
+            <button type="button" class="chip" data-preset="both">Two earners on £99,000</button>
+          </div>
+        </details>
+
+        <div class="answer-row" id="answerRow" hidden></div>
+
+        <div class="results-page" id="results" hidden>
+          <div class="rp-hero" id="rpHero"></div>
+
+          <section class="rp-block" aria-labelledby="planTitle">
+            <h3 id="planTitle">What you can do about it</h3>
+            <div id="rpTips" class="tips"></div>
+          </section>
+
+          <section class="rp-block" id="rpLoanBlock" aria-labelledby="loanTitle" hidden>
+            <h3 id="loanTitle">Your student loan</h3>
+            <div id="rpLoan"></div>
+          </section>
+
+          <section class="rp-block" aria-labelledby="howTitleR">
+            <h3 id="howTitleR">How the cliff works for you</h3>
+            <div id="rpHow"></div>
+          </section>
+
+          <section class="rp-block" aria-labelledby="pictureTitle">
+            <h3 id="pictureTitle">The cliff in one picture</h3>
+            <p class="muted" id="rpChartSub"></p>
+            <div id="chartHostR"></div>
+            <ul class="legend" id="legendR"></ul>
+          </section>
+
+          <div class="rp-cta">
+            <button type="button" class="btn primary big" id="showData">Show me all the data</button>
+            <button type="button" class="btn" id="shareLink">Copy a link to my results</button>
+            <button type="button" class="btn ghost" id="resetAll">Start again</button>
+          </div>
+          <p class="hint" id="shareStatus" role="status"></p>
         </div>
 
         <div id="dashboard" hidden>
           <div class="dash-head">
             <h2>All the data</h2>
             <p>Every chart and table behind your numbers. Change your salary or pension here, or use the buttons above to edit any answer.</p>
+            <button type="button" class="btn small" id="backToResults">Back to my results</button>
           </div>
 
           <div class="salary-bar-sentinel" id="sbSentinel" aria-hidden="true"></div>
@@ -496,6 +513,7 @@
                   <tr><th scope="row">England, Wales, NI rates</th><td>20% to £50,270, 40% to £125,140, 45% above</td></tr>
                   <tr><th scope="row">Employee National Insurance</th><td>8% from £12,570 to £50,270, then 2%</td></tr>
                   <tr><th scope="row">Student loan thresholds</th><td>Plan 1 £26,900, Plan 2 £29,385, Plan 4 £33,795, Plan 5 £25,000 at 9%. Postgraduate £21,000 at 6%</td></tr>
+                  <tr><th scope="row">Student loan payoff</th><td>An estimate that assumes your pay and the thresholds stay the same, with interest of about 6% on Plan 2 and 4% on others unless you enter your own. Write off dates are not modelled</td></tr>
                   <tr><th scope="row">Child Benefit</th><td>£27.05 a week first child, £17.90 each additional child</td></tr>
                   <tr><th scope="row">Child Benefit charge</th><td>1% per £200 of the higher earner's income from £60,000, full at £80,000</td></tr>
                   <tr><th scope="row">Tax Free Childcare</th><td>20% of the bill, up to £2,000 a child. Each parent must be at £100,000 or less and working</td></tr>

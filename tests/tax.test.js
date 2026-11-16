@@ -186,6 +186,18 @@ test('next slice components add up to the delta, with pension counted as saved',
   near(T.marginalRate(s, 110000, 1000), n.rate, 0.0001);
 });
 
+test('student loan payoff estimates how long repayments last', () => {
+  const base2 = { salary: 110000, children: [], plan: 'plan2', loanRate: 6 };
+  const clears = T.loanPayoff(T.normalise(Object.assign({ loanBalance: 40000 }, base2)));
+  near(clears.annual, 7255.35);
+  assert.equal(clears.state, 'clears');
+  assert.ok(clears.months >= 80 && clears.months <= 82, 'months was ' + clears.months);
+  assert.equal(T.loanPayoff(T.normalise(Object.assign({ loanBalance: 500000 }, base2))).state, 'never');
+  assert.equal(T.loanPayoff(T.normalise(base2)).state, 'unknown');
+  assert.equal(T.loanPayoff(T.normalise({ salary: 110000, children: [] })).state, 'none');
+  assert.equal(T.normalise({ loanRate: 'abc' }).loanRate, null);
+});
+
 test('normalise clamps hostile input', () => {
   const s = T.normalise({
     salary: 'abc',

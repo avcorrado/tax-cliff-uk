@@ -1,8 +1,10 @@
 # The £100,000 cliff: UK tax explorer
 
-An interactive, step by step explorer for the UK £100,000 income tax cliff, for the 2026/27 tax year.
+An interactive explorer for the UK £100,000 income tax cliff, for the 2026/27 tax year.
 
-You answer a few quick questions (salary, children, pension) and the page walks you through what the cliff does to your own numbers. At the end you can open all of the data: charts, breakdowns, escape routes and a pay rise table.
+It works like a tax app: one plain English question per screen (salary, children and their ages, childcare costs, pension) with a big Next button. Under each answer a short card explains what it means for you. At the end you get a results page with a personal plan, such as "raise your pension from 5% to 11%", and a button to open all of the data: charts, breakdowns, escape routes and a pay rise table.
+
+Optional details (student loan with balance and payoff estimate, partner, country, Gift Aid, how the pension is paid) sit on a final optional screen so the main flow stays simple.
 
 ## What it models
 
@@ -13,8 +15,7 @@ You answer a few quick questions (salary, children, pension) and the page walks 
 - Tax Free Childcare and the 30 funded hours in England, which switch off for the whole family at £100,001
 - Pension contributions as a percentage of salary, by salary sacrifice or personal pension, with the £60,000 annual allowance
 - Gift Aid, partners, and nursery costs entered as a monthly bill (estimated from hours if you do not know it)
-
-Advanced settings (country, student loan, partner, how the pension is paid, employer contribution, Gift Aid, nursery weeks) are tucked away so the main flow stays simple.
+- Student loan repayments, and an estimate of when the loan clears and your pay goes up, from the balance you enter
 
 ## Run it locally
 
@@ -46,7 +47,7 @@ The workflow in `.github/workflows/pages.yml` runs the tests and publishes the s
 | `css/styles.css` | Styles with automatic light and dark themes |
 | `js/tax.js` | Tax engine for 2026/27, also used by the tests |
 | `js/charts.js` | Small dependency free SVG chart renderer |
-| `js/app.js` | Guided steps, dashboard and interactions |
+| `js/app.js` | Question flow, results page, dashboard and interactions |
 | `tests/tax.test.js` | Engine tests |
 
 ## Updating for a new tax year

@@ -72,6 +72,8 @@
       gift: 0,
       plan: 'none',
       postgrad: false,
+      loanBalance: 0,
+      loanRate: null,
       children: [
         { band: 'toddler', hours: 40 },
         { band: 'preschool', hours: 40 },
@@ -101,6 +103,8 @@
     s.method = s.method === 'personal' ? 'personal' : 'sacrifice';
     s.plan = PLANS.includes(s.plan) ? s.plan : 'none';
     s.postgrad = !!s.postgrad;
+    s.loanBalance = clamp(num(s.loanBalance), 0, 1e6);
+    s.loanRate = s.loanRate == null || s.loanRate === '' || !Number.isFinite(+s.loanRate) ? null : clamp(+s.loanRate, 0, 20);
     s.children = (Array.isArray(s.children) ? s.children : []).slice(0, 4).map((c) => {
       const band = BANDS.includes(c && c.band) ? c.band : 'preschool';
       const hours = band === 'teen' ? 0 : clamp(num(c && c.hours, BAND_INFO[band].hours), 0, 70);
@@ -144,6 +148,39 @@
     if (plan && plan !== 'none') total += Math.max(0, pay - sl.plans[plan]) * sl.rate;
     if (postgrad) total += Math.max(0, pay - sl.postgrad.threshold) * sl.postgrad.rate;
     return total;
+  }
+
+  // Typical interest used when the user does not know their rate. Plan 2 charges up to RPI plus 3% at higher incomes.
+  function loanDefaultRate(plan) {
+    return plan === 'plan2' ? 6 : 4;
+  }
+
+  // Estimates how long a student loan lasts at the current pay, and what the repayments are worth each month.
+  function loanPayoff(s) {
+    const h = calcHousehold(s);
+    const pay = h.you.pay;
+    const hasPlan = s.plan !== 'none';
+    const annual = hasPlan ? studentLoanRepayment(pay, s.plan, false) : studentLoanRepayment(pay, 'none', s.postgrad);
+    const monthly = annual / 12;
+    const rate = (s.loanRate != null ? s.loanRate : loanDefaultRate(s.plan)) / 100;
+    const out = { annual, monthly, rate, balance: s.loanBalance, months: null, years: null, state: 'none' };
+    if (!(annual > 0)) return out;
+    if (!(s.loanBalance > 0)) {
+      out.state = 'unknown';
+      return out;
+    }
+    let balance = s.loanBalance;
+    let months = 0;
+    while (balance > 0 && months < 600) {
+      balance = balance * (1 + rate / 12) - monthly;
+      months += 1;
+    }
+    out.state = balance > 0 ? 'never' : 'clears';
+    if (out.state === 'clears') {
+      out.months = months;
+      out.years = months / 12;
+    }
+    return out;
   }
 
   function calcPerson(p, opts) {
@@ -400,6 +437,8 @@
     defaultState,
     normalise,
     estimateMonthly,
+    loanDefaultRate,
+    loanPayoff,
     personalAllowance,
     incomeTax,
     employeeNI,
