@@ -1,0 +1,10 @@
+{
+  "name": "tax-cliff-uk",
+  "version": "1.0.0",
+  "description": "Interactive explorer for the UK £100,000 income tax cliff (2026/27)",
+  "private": true,
+  "scripts": {
+    "test": "node --test \"tests/*.test.js\"",
+    "start": "python3 -m http.server 8080"
+  }
+}

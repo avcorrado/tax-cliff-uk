@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The £100,000 Cliff: UK Tax Explorer 2026/27</title>
+  <meta name="description" content="A step by step walkthrough of the UK £100,000 tax cliff. Enter your salary, children and pension and see the 62% effective tax rate and the childcare cliff in your own numbers.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="The £100,000 Cliff: UK Tax Explorer">
+  <meta property="og:description" content="Earn £2 more, lose £1 of allowance. Earn £1 more, lose thousands in childcare help. See your own numbers for 2026/27.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b4132a'/%3E%3Cpath d='M10 44h26V22h8v10h10' fill='none' stroke='%23fff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#explorer">Skip to the explorer</a>
+
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="#top" aria-label="Tax Cliff UK home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Tax Cliff UK</span>
+      </a>
+      <nav aria-label="Sections">
+        <a href="#explorer">Your numbers</a>
+        <a href="#how">How it works</a>
+        <a href="#assumptions">The numbers</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">UK income tax and benefits, tax year 2026/27</p>
+        <h1>The £100,000 cliff</h1>
+        <p class="lede">Between £100,000 and £125,140 every extra pound you earn is taxed at an effective 62% in England. For parents, earning a single pound over the line can switch off thousands of pounds of childcare help. Answer a few quick questions and see what it does to you.</p>
+        <ul class="hero-stats">
+          <li>
+            <b class="big">62%</b>
+            <span>effective rate on each extra pound between £100,000 and £125,140 in England, Wales and Northern Ireland (69.5% in Scotland, 71% with a Plan 2 loan).</span>
+          </li>
+          <li>
+            <b class="big" id="heroCliff">£15,405</b>
+            <span>of childcare support lost in a single pound for a household with a toddler and a preschooler in full time nursery.</span>
+          </li>
+          <li>
+            <b class="big">£125,140</b>
+            <span>is where the Personal Allowance finally reaches zero. Above it the rate falls to 47%, lower than the rate you paid on the way up.</span>
+          </li>
+          <li>
+            <b class="big">2010</b>
+            <span>is when the taper began. The £100,000 threshold has never been raised, and allowances are frozen until April 2031.</span>
+          </li>
+        </ul>
+        <div class="hero-actions">
+          <a class="btn primary" href="#explorer">Walk me through my numbers</a>
+          <a class="btn" href="#how">How the cliff works</a>
+        </div>
+      </div>
+    </section>
+
+    <noscript>
+      <div class="wrap"><p class="notice">This explorer needs JavaScript to run the calculations. Everything happens in your browser and nothing is sent anywhere.</p></div>
+    </noscript>
+
+    <section id="explorer" class="explorer" aria-labelledby="explorerTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="explorerTitle">See what it does to you</h2>
+          <p>Six quick steps take you from your salary to the full picture. You can go back at any time, and at the end you can open all of the data.</p>
+        </div>
+
+        <div class="guide card" id="guide">
+          <div class="guide-top">
+            <ol class="progress" id="progress" aria-label="Steps">
+              <li><button type="button" data-goto="1"><span class="dot">1</span><span class="lbl">Your pay</span></button></li>
+              <li><button type="button" data-goto="2"><span class="dot">2</span><span class="lbl">Your tax</span></button></li>
+              <li><button type="button" data-goto="3"><span class="dot">3</span><span class="lbl">Family</span></button></li>
+              <li><button type="button" data-goto="4"><span class="dot">4</span><span class="lbl">The cliff</span></button></li>
+              <li><button type="button" data-goto="5"><span class="dot">5</span><span class="lbl">Pension</span></button></li>
+              <li><button type="button" data-goto="6"><span class="dot">6</span><span class="lbl">Summary</span></button></li>
+            </ol>
+            <div class="answer-row" id="answerRow" hidden></div>
+            <details class="examples">
+              <summary>Or start from an example</summary>
+              <div class="presets" role="group" aria-label="Example scenarios">
+                <button type="button" class="chip" data-preset="parents">Parent of two under 5s</button>
+                <button type="button" class="chip" data-preset="escape">Pension escape hatch</button>
+                <button type="button" class="chip" data-preset="nokids">No children, just the 62%</button>
+                <button type="button" class="chip" data-preset="plan2">Plan 2 graduate</button>
+                <button type="button" class="chip" data-preset="scotland">Scotland</button>
+                <button type="button" class="chip" data-preset="couple">Couple, partner on £40,000</button>
+                <button type="button" class="chip" data-preset="both">Two earners on £99,000</button>
+              </div>
+            </details>
+          </div>
+
+          <div class="steps" id="steps">
+            <section class="step" data-step="1" aria-labelledby="s1t">
+              <div class="step-q">
+                <p class="step-kicker">Step 1 of 6</p>
+                <h3 id="s1t" class="step-title" tabindex="-1">What is your gross salary?</h3>
+                <p class="muted">Your pay before tax, for a whole year.</p>
+                <div class="money-input big-input"><span class="pound" aria-hidden="true">£</span><input data-money="salary" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" aria-label="Gross salary in pounds"></div>
+                <div data-mount="salary-range"></div>
+                <div class="quick" role="group" aria-label="Quick salaries">
+                  <button type="button" class="chip small" data-set-salary="60000">£60k</button>
+                  <button type="button" class="chip small" data-set-salary="80000">£80k</button>
+                  <button type="button" class="chip small" data-set-salary="95000">£95k</button>
+                  <button type="button" class="chip small" data-set-salary="105000">£105k</button>
+                  <button type="button" class="chip small" data-set-salary="115000">£115k</button>
+                  <button type="button" class="chip small" data-set-salary="130000">£130k</button>
+                </div>
+                <p class="hint">Not in England, or have a student loan or a partner? Open <button type="button" class="linklike" data-open-advanced>advanced settings</button>.</p>
+              </div>
+              <div class="step-viz" id="viz1" aria-live="off"></div>
+            </section>
+
+            <section class="step" data-step="2" aria-labelledby="s2t" hidden>
+              <div class="step-q">
+                <p class="step-kicker">Step 2 of 6</p>
+                <h3 id="s2t" class="step-title" tabindex="-1">Where does your pay actually go?</h3>
+                <p class="muted">No questions on this one. These are your own numbers, worked out from your salary.</p>
+                <div class="explain">
+                  <p><b>The Personal Allowance</b> is the first £12,570 you earn tax free. Every £2 of income above £100,000 takes £1 of it away, until it is gone at £125,140.</p>
+                  <p>That lost allowance is taxed too, which is why the next pound costs far more than the headline rate.</p>
+                </div>
+              </div>
+              <div class="step-viz" id="viz2" aria-live="off"></div>
+            </section>
+
+            <section class="step" data-step="3" aria-labelledby="s3t" hidden>
+              <div class="step-q">
+                <p class="step-kicker">Step 3 of 6</p>
+                <h3 id="s3t" class="step-title" tabindex="-1">Do you have children?</h3>
+                <p class="muted">Add each child so we can work out Child Benefit and childcare help. Skip this if you have none.</p>
+                <div class="add-chips" role="group" aria-label="Add a child">
+                  <button type="button" class="chip small" data-add-band="baby">+ Baby</button>
+                  <button type="button" class="chip small" data-add-band="toddler">+ Toddler</button>
+                  <button type="button" class="chip small" data-add-band="preschool">+ Age 3 to 4</button>
+                  <button type="button" class="chip small" data-add-band="school">+ School age</button>
+                  <button type="button" class="chip small" data-add-band="teen">+ Age 12 to 15</button>
+                </div>
+                <div id="childList" class="child-list"></div>
+              </div>
+              <div class="step-viz" id="viz3" aria-live="off"></div>
+            </section>
+
+            <section class="step" data-step="4" aria-labelledby="s4t" hidden>
+              <div class="step-q">
+                <p class="step-kicker">Step 4 of 6</p>
+                <h3 id="s4t" class="step-title" tabindex="-1">What happens when you cross £100,000?</h3>
+                <p class="muted">Slide your salary across the line and watch your money. Click or drag on the chart too.</p>
+                <div class="money-input big-input"><span class="pound" aria-hidden="true">£</span><input data-money="salary" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" aria-label="Gross salary in pounds"></div>
+                <div data-mount="salary-range"></div>
+                <div class="quick">
+                  <button type="button" class="chip small" data-jump="below">Just below the cliff</button>
+                  <button type="button" class="chip small danger" data-jump="above">Just above</button>
+                </div>
+                <div id="viz4Top"></div>
+              </div>
+              <div class="step-viz">
+                <div id="chartHost4"></div>
+                <ul class="legend" id="legend4"></ul>
+                <div id="viz4Bottom"></div>
+              </div>
+            </section>
+
+            <section class="step" data-step="5" aria-labelledby="s5t" hidden>
+              <div class="step-q">
+                <p class="step-kicker">Step 5 of 6</p>
+                <h3 id="s5t" class="step-title" tabindex="-1">Can a pension get you out?</h3>
+                <p class="muted">Pick the percentage of your gross salary that goes into your pension. Employer money is not counted here.</p>
+                <div class="pct-row">
+                  <div class="money-input pct big-input"><input data-pct="pensionPct" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Pension contribution as a percentage of salary"><span class="unit" aria-hidden="true">%</span></div>
+                  <span class="pct-of" id="pctOf"></span>
+                </div>
+                <input class="plain-range" data-range="pensionPct" type="range" min="0" max="60" step="0.5" aria-label="Pension percentage slider">
+                <div class="quick">
+                  <button type="button" class="btn small primary" id="fixPension">Just enough to reach £100,000</button>
+                  <button type="button" class="btn small" id="clearPension">Clear</button>
+                </div>
+                <div id="viz5Top"></div>
+              </div>
+              <div class="step-viz">
+                <div id="chartHost5"></div>
+                <ul class="legend" id="legend5"></ul>
+                <div id="viz5Bottom"></div>
+              </div>
+            </section>
+
+            <section class="step" data-step="6" aria-labelledby="s6t" hidden>
+              <div class="step-q">
+                <p class="step-kicker">Step 6 of 6</p>
+                <h3 id="s6t" class="step-title" tabindex="-1">Your picture</h3>
+                <p class="muted">That is the short version. Open the full data to see every chart, table and breakdown behind it.</p>
+                <button type="button" class="btn primary big" id="showAll">Show me all the data</button>
+                <p class="hint">You can change anything afterwards using the buttons at the top.</p>
+              </div>
+              <div class="step-viz" id="viz6" aria-live="off"></div>
+            </section>
+          </div>
+
+          <div class="guide-nav" id="guideNav">
+            <button type="button" class="btn" id="navBack">Back</button>
+            <button type="button" class="btn ghost" id="skipAll">Skip to all the data</button>
+            <button type="button" class="btn primary" id="navNext">Next</button>
+          </div>
+
+          <details class="advanced" id="advanced">
+            <summary>Advanced settings</summary>
+            <div class="adv-grid">
+              <div class="field">
+                <span class="label" id="regionLabel">Where you work</span>
+                <div class="choices" role="group" aria-labelledby="regionLabel">
+                  <button type="button" data-choice="region" data-value="england" aria-pressed="true">England</button>
+                  <button type="button" data-choice="region" data-value="scotland" aria-pressed="false">Scotland</button>
+                  <button type="button" data-choice="region" data-value="wales_ni" aria-pressed="false">Wales or NI</button>
+                </div>
+                <p class="hint" id="regionHint"></p>
+              </div>
+
+              <div class="field">
+                <label for="planSelect">Student loan</label>
+                <select id="planSelect" data-select="plan">
+                  <option value="none">No student loan</option>
+                  <option value="plan1">Plan 1 (threshold £26,900)</option>
+                  <option value="plan2">Plan 2 (threshold £29,385)</option>
+                  <option value="plan4">Plan 4, Scotland (threshold £33,795)</option>
+                  <option value="plan5">Plan 5 (threshold £25,000)</option>
+                </select>
+                <label class="check"><input type="checkbox" data-check="postgrad"><span>Also a Postgraduate loan (6% above £21,000)</span></label>
+              </div>
+
+              <div class="field">
+                <span class="label" id="partnerLabel">Partner</span>
+                <label class="check"><input type="checkbox" data-check="partnerOn"><span>I have a partner who works</span></label>
+                <div data-show-if="partnerOn" hidden>
+                  <label for="partnerInput">Partner's gross salary</label>
+                  <div class="money-input"><span class="pound" aria-hidden="true">£</span><input id="partnerInput" data-money="partnerSalary" type="text" inputmode="numeric" autocomplete="off" spellcheck="false"></div>
+                </div>
+                <p class="hint">Childcare help is lost if either of you is over £100,000. Child Benefit is clawed back against whoever earns more.</p>
+              </div>
+
+              <div class="field">
+                <span class="label" id="methodLabel">How your pension is paid</span>
+                <div class="choices" role="group" aria-labelledby="methodLabel">
+                  <button type="button" data-choice="method" data-value="sacrifice" aria-pressed="true">Salary sacrifice</button>
+                  <button type="button" data-choice="method" data-value="personal" aria-pressed="false">Personal pension or net pay</button>
+                </div>
+                <p class="hint" id="methodHint"></p>
+              </div>
+
+              <div class="field">
+                <label for="employerInput">Employer pension contribution</label>
+                <div class="money-input pct"><input id="employerInput" data-pct="employerPct" type="text" inputmode="decimal" autocomplete="off" spellcheck="false"><span class="unit" aria-hidden="true">% of salary</span></div>
+                <p class="hint">Does not change your adjusted net income. It only counts towards the £60,000 annual allowance.</p>
+              </div>
+
+              <div class="field">
+                <label for="giftInput">Gift Aid donations a year</label>
+                <div class="money-input"><span class="pound" aria-hidden="true">£</span><input id="giftInput" data-money="gift" type="text" inputmode="numeric" autocomplete="off" spellcheck="false"></div>
+                <p class="hint">The amount you hand over. The charity claims 25% on top, and the grossed up total reduces your adjusted net income.</p>
+              </div>
+
+              <div class="field">
+                <label for="weeksInput">Weeks of nursery a year</label>
+                <div class="money-input"><input id="weeksInput" data-number="weeks" type="text" inputmode="numeric" autocomplete="off" spellcheck="false"><span class="unit" aria-hidden="true">weeks</span></div>
+                <p class="hint">Used to estimate nursery bills and value the funded hours.</p>
+              </div>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn small" id="shareLink">Copy a link to this scenario</button>
+              <button type="button" class="btn small ghost" id="resetAll">Start again</button>
+            </div>
+            <p class="hint" id="shareStatus" role="status"></p>
+          </details>
+        </div>
+
+        <div id="dashboard" hidden>
+          <div class="dash-head">
+            <h2>All the data</h2>
+            <p>Every chart and table behind your numbers. Change your salary or pension here, or use the buttons above to edit any answer.</p>
+          </div>
+
+          <div class="salary-bar-sentinel" id="sbSentinel" aria-hidden="true"></div>
+          <div class="salary-bar" id="salaryBar">
+            <div class="sb-row">
+              <div class="sb-field">
+                <label for="barSalary" class="sb-label">Your gross salary</label>
+                <div class="money-input big-input"><span class="pound" aria-hidden="true">£</span><input id="barSalary" data-money="salary" type="text" inputmode="numeric" autocomplete="off" spellcheck="false"></div>
+              </div>
+              <div class="nudges" role="group" aria-label="Adjust salary">
+                <button type="button" class="nudge" data-nudge="-10000" aria-label="Subtract £10,000">↓ £10k</button>
+                <button type="button" class="nudge" data-nudge="-1000" aria-label="Subtract £1,000">↓ £1k</button>
+                <button type="button" class="nudge" data-nudge="-1" aria-label="Subtract £1">↓ £1</button>
+                <button type="button" class="nudge" data-nudge="1" aria-label="Add £1">↑ £1</button>
+                <button type="button" class="nudge" data-nudge="1000" aria-label="Add £1,000">↑ £1k</button>
+                <button type="button" class="nudge" data-nudge="10000" aria-label="Add £10,000">↑ £10k</button>
+              </div>
+            </div>
+            <div data-mount="salary-range"></div>
+            <div class="sb-pension">
+              <label for="barPension" class="sb-label">Pension <b id="barPensionText">0%</b> of salary</label>
+              <input id="barPension" class="plain-range" data-range="pensionPct" type="range" min="0" max="60" step="0.5" aria-label="Pension percentage slider">
+            </div>
+            <div class="sb-summary">
+              <div><span class="k">Household money left</span><b id="barTakeHome">£0</b></div>
+              <div><span class="k">Tax on your next £1,000</span><b id="barMarginal">0%</b></div>
+              <div class="sb-jump">
+                <button type="button" class="chip small" data-jump="below">Just below the cliff</button>
+                <button type="button" class="chip small danger" data-jump="above">Just above</button>
+              </div>
+              <div class="period" role="radiogroup" aria-label="Show amounts per">
+                <label><input type="radio" name="period" value="month" checked><span>Per month</span></label>
+                <label><input type="radio" name="period" value="year"><span>Per year</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="results">
+            <div id="live" class="sr-only" role="status" aria-live="polite"></div>
+            <div id="statusBanner" class="status"></div>
+            <div id="kpis" class="kpis"></div>
+
+            <section class="card chart-card" aria-labelledby="chartTitle">
+              <div class="chart-head">
+                <div class="tabs" role="tablist" aria-label="Chart views">
+                  <button type="button" role="tab" id="tab-income" aria-selected="true" aria-controls="chartPanel" data-view="income">Money in your pocket</button>
+                  <button type="button" role="tab" id="tab-marginal" aria-selected="false" aria-controls="chartPanel" data-view="marginal" tabindex="-1">Tax on each extra pound</button>
+                  <button type="button" role="tab" id="tab-pension" aria-selected="false" aria-controls="chartPanel" data-view="pension" tabindex="-1">Pension escape</button>
+                </div>
+                <div class="seg" role="group" aria-label="Chart range" id="rangeSeg">
+                  <button type="button" data-range-mode="focus" aria-pressed="true">Zoom on the cliff</button>
+                  <button type="button" data-range-mode="full" aria-pressed="false">£0 to £250,000</button>
+                </div>
+              </div>
+              <h3 id="chartTitle"></h3>
+              <p id="chartSub" class="muted"></p>
+              <div id="chartPanel" role="tabpanel" aria-labelledby="tab-income">
+                <div id="chartHost"></div>
+              </div>
+              <ul class="legend" id="chartLegend"></ul>
+              <p class="chart-hint">Hover to inspect any point. Click or drag along the chart to change your salary or pension.</p>
+            </section>
+
+            <section class="card" aria-labelledby="insightsTitle">
+              <h3 id="insightsTitle">What this means for you</h3>
+              <div id="insights" class="insights"></div>
+            </section>
+
+            <div class="pair">
+              <section class="card" aria-labelledby="breakTitle">
+                <h3 id="breakTitle">Where your pay goes</h3>
+                <div id="breakdown"></div>
+              </section>
+
+              <section class="card" aria-labelledby="nextTitle">
+                <h3 id="nextTitle">What happens to your next pay rise</h3>
+                <div id="nextSlice"></div>
+              </section>
+            </div>
+
+            <section class="card" aria-labelledby="stratTitle">
+              <h3 id="stratTitle">Escape routes</h3>
+              <p class="muted">What it costs, in cash, to bring your adjusted net income down to the threshold. Everything else in your scenario stays the same.</p>
+              <div id="strategies"></div>
+            </section>
+
+            <section class="card" aria-labelledby="sampleTitle">
+              <h3 id="sampleTitle">Pay rise table</h3>
+              <p class="muted">Your scenario at a range of incomes. Rows inside the trap are shaded. Click a row to try that salary.</p>
+              <div id="samples" class="table-scroll"></div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="how" aria-labelledby="howTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="howTitle">How the cliff actually works</h2>
+          <p>There is no single £100,000 rule. Several separate rules stack up on the same income range, which is why the effect is so severe. Each one is modelled in the explorer.</p>
+        </div>
+
+        <div class="timeline" aria-hidden="true">
+          <div class="tl-bar">
+            <span class="tl-seg s1" style="flex: 60"><i>Normal rates</i></span>
+            <span class="tl-seg s2" style="flex: 20"><i>Child Benefit charge</i></span>
+            <span class="tl-seg s3" style="flex: 20"><i>Charge in full</i></span>
+            <span class="tl-seg s4" style="flex: 25.14"><i>62% zone</i></span>
+            <span class="tl-seg s5" style="flex: 24.86"><i>47%</i></span>
+            <span class="tl-flag" style="left: 66.667%">Childcare cliff</span>
+          </div>
+          <div class="tl-ticks"><span>£0</span><span>£60,000</span><span>£80,000</span><span>£100,000</span><span>£125,140</span><span>£150,000</span></div>
+        </div>
+
+        <div class="cards">
+          <article class="card how-card">
+            <h3><span class="num">1</span> The Personal Allowance taper</h3>
+            <p>Everyone gets the first £12,570 of income tax free. For every £2 of adjusted net income above £100,000 you lose £1 of that allowance, and by £125,140 it has gone completely.</p>
+            <div class="maths">
+              <p><b>The maths for each extra £1 in England</b></p>
+              <p>40p tax on the pound itself</p>
+              <p>20p tax on the 50p of allowance you lose</p>
+              <p>2p National Insurance</p>
+              <p class="total">62p gone, 38p kept</p>
+            </div>
+            <p class="small">In Scotland the advanced rate is 45%, so the same maths gives 67.5% before National Insurance.</p>
+            <button type="button" class="btn small" data-preset="nokids" data-reveal>Show me with no children</button>
+          </article>
+
+          <article class="card how-card">
+            <h3><span class="num">2</span> Child Benefit clawback</h3>
+            <p>The High Income Child Benefit Charge takes back 1% of your Child Benefit for every £200 of the higher earner's income above £60,000, and all of it at £80,000. In 2026/27 Child Benefit is £27.05 a week for the first child and £17.90 for each other child.</p>
+            <p>That adds roughly 7 points of extra tax for one child and 12 for two on the way up. It is tested on the higher earner, not the household, so two people on £55,000 never pay it.</p>
+            <button type="button" class="btn small" data-preset="couple" data-reveal>Show me a couple</button>
+          </article>
+
+          <article class="card how-card danger">
+            <h3><span class="num">3</span> Tax Free Childcare, a true cliff</h3>
+            <p>The government tops up what you pay a registered childcare provider by 20p for every 80p, worth up to £2,000 per child a year. Both parents need adjusted net income of £100,000 or less.</p>
+            <p><b>At £100,001 it is all gone.</b> There is no taper, no grace and no partial credit. One pound of extra income can cost a family thousands.</p>
+            <button type="button" class="btn small" data-preset="parents" data-reveal>Show me a parent of two</button>
+          </article>
+
+          <article class="card how-card danger">
+            <h3><span class="num">4</span> 30 hours funded childcare</h3>
+            <p>Working parents in England get 30 funded hours a week for 38 weeks for children from 9 months to school age. The same £100,000 test applies to each parent. Three and four year olds still keep the universal 15 hours.</p>
+            <p>Scotland funds hours for 3 and 4 year olds without an income test, which the explorer reflects. Wales and Northern Ireland run different schemes that are not modelled.</p>
+            <button type="button" class="btn small" data-preset="scotland" data-reveal>Compare with Scotland</button>
+          </article>
+
+          <article class="card how-card">
+            <h3><span class="num">5</span> Student loans</h3>
+            <p>Plan 1, 2, 4 and 5 loans take 9% of pay above a threshold, and a Postgraduate loan takes 6%. The charge is based on pay, not adjusted net income, so a personal pension does not reduce it but salary sacrifice does.</p>
+            <p>A Plan 2 graduate inside the taper pays 40% + 20% + 2% + 9%, an effective 71%.</p>
+            <button type="button" class="btn small" data-preset="plan2" data-reveal>Show me a Plan 2 graduate</button>
+          </article>
+
+          <article class="card how-card">
+            <h3><span class="num">6</span> National Insurance</h3>
+            <p>Employees pay 8% on earnings between £12,570 and £50,270 and 2% above. National Insurance does not cliff at £100,000 but it adds 2 points to the effective rate.</p>
+            <p>Salary sacrifice pensions also save National Insurance. From April 2029 that relief is due to be capped at £2,000 a year, which the explorer does not model.</p>
+          </article>
+
+          <article class="card how-card">
+            <h3><span class="num">7</span> The rate falls after the cliff</h3>
+            <p>Once the allowance is fully withdrawn at £125,140, the marginal rate drops back to 45% plus 2% National Insurance. A person on £110,000 pays more tax on their next pound than a person on £500,000.</p>
+            <p>The pattern is a hump, not a ladder, and it is a side effect of how the allowance is withdrawn rather than a deliberate rate.</p>
+          </article>
+
+          <article class="card how-card">
+            <h3><span class="num">8</span> Frozen thresholds</h3>
+            <p>The £100,000 threshold has not changed since the taper began in 2010. The Personal Allowance, higher rate threshold and additional rate threshold are frozen until April 2031. Pay rises keep pulling more people towards the cliff while the line stays put.</p>
+          </article>
+        </div>
+
+        <div class="card scot">
+          <h3>Scottish income tax bands for 2026/27</h3>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Band</th><th>Income</th><th class="num-col">Rate</th><th class="num-col">Inside the taper</th></tr></thead>
+              <tbody>
+                <tr><td>Starter</td><td>£12,571 to £16,537</td><td class="num-col">19%</td><td class="num-col">n/a</td></tr>
+                <tr><td>Basic</td><td>£16,538 to £29,526</td><td class="num-col">20%</td><td class="num-col">n/a</td></tr>
+                <tr><td>Intermediate</td><td>£29,527 to £43,662</td><td class="num-col">21%</td><td class="num-col">n/a</td></tr>
+                <tr><td>Higher</td><td>£43,663 to £75,000</td><td class="num-col">42%</td><td class="num-col">n/a</td></tr>
+                <tr><td>Advanced</td><td>£75,001 to £125,140</td><td class="num-col">45%</td><td class="num-col"><b>67.5%</b></td></tr>
+                <tr><td>Top</td><td>Over £125,140</td><td class="num-col">48%</td><td class="num-col">n/a</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="small">Bands apply after the Personal Allowance. National Insurance is the same across the UK.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="assumptions" class="assumptions" aria-labelledby="assumptionsTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="assumptionsTitle">The numbers behind the model</h2>
+          <p>Every rate comes from official sources for the 2026/27 tax year. The calculations run entirely in your browser and the engine has automated tests against hand checked figures.</p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3>Rates and thresholds used</h3>
+            <div class="table-scroll">
+              <table>
+                <tbody>
+                  <tr><th scope="row">Personal Allowance</th><td>£12,570, reduced £1 for every £2 over £100,000, nil at £125,140</td></tr>
+                  <tr><th scope="row">England, Wales, NI rates</th><td>20% to £50,270, 40% to £125,140, 45% above</td></tr>
+                  <tr><th scope="row">Employee National Insurance</th><td>8% from £12,570 to £50,270, then 2%</td></tr>
+                  <tr><th scope="row">Student loan thresholds</th><td>Plan 1 £26,900, Plan 2 £29,385, Plan 4 £33,795, Plan 5 £25,000 at 9%. Postgraduate £21,000 at 6%</td></tr>
+                  <tr><th scope="row">Child Benefit</th><td>£27.05 a week first child, £17.90 each additional child</td></tr>
+                  <tr><th scope="row">Child Benefit charge</th><td>1% per £200 of the higher earner's income from £60,000, full at £80,000</td></tr>
+                  <tr><th scope="row">Tax Free Childcare</th><td>20% of the bill, up to £2,000 a child. Each parent must be at £100,000 or less and working</td></tr>
+                  <tr><th scope="row">30 hours (England)</th><td>30 hours for 38 weeks from 9 months to school age. Universal 15 hours for ages 3 and 4</td></tr>
+                  <tr><th scope="row">Nursery costs</th><td>You enter a monthly bill per child. If you leave it, it is estimated at £7.50 an hour for your hours, close to the £7.44 Coram average for under 2s in England</td></tr>
+                  <tr><th scope="row">Working test</th><td>Each parent earns at least £10,575 a year, 16 hours at the £12.71 National Living Wage</td></tr>
+                  <tr><th scope="row">Pension annual allowance</th><td>£60,000 including employer contributions</td></tr>
+                  <tr><th scope="row">Gift Aid</th><td>Donation grossed up by 25%, reduces adjusted net income</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>How "money in your pocket" is worked out</h3>
+            <p>Take home pay for you and any partner, after income tax, National Insurance, student loan and pension or Gift Aid payments, plus Child Benefit, minus the High Income Child Benefit Charge, minus what you really pay for childcare after funded hours and Tax Free Childcare.</p>
+            <p>The dotted line on the chart shows the same household if the £100,000 rules did not exist. The shaded gap between the two lines is the cost of the cliff at each salary.</p>
+            <h3>Deliberately not modelled</h3>
+            <ul class="plain">
+              <li>Universal Credit and other means tested benefits</li>
+              <li>Savings, dividends, rental and self employed income, and Class 4 National Insurance</li>
+              <li>Personal Savings Allowance, which drops from £1,000 to £500 to nil as you move up the bands</li>
+              <li>Benefits in kind, Marriage Allowance and the disabled child Tax Free Childcare limit of £4,000</li>
+              <li>Wales and Northern Ireland funded childcare schemes, and Scottish payments for families</li>
+              <li>Tapered annual allowance, which only starts above £260,000 of adjusted income</li>
+              <li>Pension contributions for a partner, and any employer National Insurance saving passed on to you</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card sources">
+          <h3>Sources</h3>
+          <ul class="plain cols">
+            <li><a href="https://www.gov.uk/income-tax-rates/income-over-100000" rel="noopener">GOV.UK: Income over £100,000</a></li>
+            <li><a href="https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2026-to-2027" rel="noopener">GOV.UK: Rates and thresholds 2026 to 2027</a></li>
+            <li><a href="https://www.gov.uk/child-benefit-tax-charge" rel="noopener">GOV.UK: High Income Child Benefit Charge</a></li>
+            <li><a href="https://www.gov.uk/tax-free-childcare" rel="noopener">GOV.UK: Tax Free Childcare</a></li>
+            <li><a href="https://www.gov.uk/30-hours-free-childcare" rel="noopener">GOV.UK: 30 hours free childcare</a></li>
+            <li><a href="https://www.gov.uk/repaying-your-student-loan/what-you-pay" rel="noopener">GOV.UK: Repaying your student loan</a></li>
+            <li><a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" rel="noopener">GOV.UK: Pension tax relief</a></li>
+            <li><a href="https://www.gov.uk/donating-to-charity/gift-aid" rel="noopener">GOV.UK: Gift Aid</a></li>
+            <li><a href="https://www.gov.scot/publications/scottish-income-tax-rates-and-bands/pages/2026-to-2027/" rel="noopener">Scottish Government: Income tax rates and bands</a></li>
+            <li><a href="https://www.coram.org.uk/news/childcare-survey-2026/" rel="noopener">Coram: Childcare Survey 2026</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq" aria-labelledby="faqTitle">
+      <div class="wrap narrow">
+        <div class="section-head">
+          <h2 id="faqTitle">Questions people ask</h2>
+        </div>
+
+        <details>
+          <summary>What is adjusted net income?</summary>
+          <p>It is your total taxable income minus certain deductions: gross personal pension contributions paid under relief at source, and Gift Aid donations. It is the figure HMRC uses for the £100,000 tests, the allowance taper, Tax Free Childcare, free hours and the Child Benefit charge. Salary sacrifice lowers your salary itself, so it lowers adjusted net income automatically.</p>
+        </details>
+        <details>
+          <summary>Is it really a 60% tax rate?</summary>
+          <p>It is an effective rate on the income band, not a published tax rate. The 40% higher rate applies to the pound itself, and withdrawing the allowance adds 20p for every pound because each £1 of income removes 50p of allowance that would otherwise have been tax free. Add 2% National Insurance and you get 62%, a figure that adds up to 71% with a Plan 2 student loan.</p>
+        </details>
+        <details>
+          <summary>Does the cliff apply to couples together?</summary>
+          <p>No, and that is part of what makes it so unfair. The Personal Allowance is tested person by person. Tax Free Childcare and 30 hours are lost if either parent is over £100,000. The Child Benefit charge is tested against the higher earner. So two parents each on £99,000 keep everything, while one parent on £101,000 and a partner who stays at home keeps less. Try the "Two earners on £99,000" example and then look at the couples insight in the full data.</p>
+        </details>
+        <details>
+          <summary>How can I bring my income below £100,000?</summary>
+          <p>The usual routes are pension contributions (workplace salary sacrifice, a net pay arrangement or a personal pension), Gift Aid donations, and salary sacrifice for approved benefits such as an electric car or a cycle to work scheme. You can also use unused pension allowance carried forward from the previous three tax years if you were in a registered pension scheme. Contributions must be made before 5 April. Bonuses can often be sacrificed into a pension before they are paid.</p>
+        </details>
+        <details>
+          <summary>Salary sacrifice, net pay or personal pension, what is the difference?</summary>
+          <p>With salary sacrifice you give up part of your salary in return for an employer pension contribution. It reduces your pay for income tax, National Insurance and student loan, so it is the most efficient route. With a net pay arrangement your employer deducts the pension from pay before income tax, but National Insurance and student loan are still charged on the full amount. With a personal pension (relief at source) you pay in 80% and the provider adds 20%. You then claim the extra higher rate relief, and the restored Personal Allowance, through your tax return or by asking HMRC to change your tax code. The explorer treats the last two as the same maths, since the final result is identical once relief has been claimed.</p>
+        </details>
+        <details>
+          <summary>Why can a pension payment increase my take home pay?</summary>
+          <p>Because several things switch back on when your adjusted net income falls to £100,000. You regain the Personal Allowance, recover Tax Free Childcare and funded hours, and for a parent that can be worth much more than the cash you put into the pension. Try the "Pension escape hatch" example. It is the reason many advisers talk about the £100,000 trap rather than the £100,000 rate.</p>
+        </details>
+        <details>
+          <summary>What is the pension annual allowance?</summary>
+          <p>For most people it is £60,000 a year, counting both your own and your employer's contributions. It tapers for those with adjusted income above £260,000, which is outside this explorer's range. Tax relief on your own personal contributions is limited to 100% of your earnings in the tax year. Unused allowance from the previous three years can be carried forward.</p>
+        </details>
+        <details>
+          <summary>What counts as money in your pocket?</summary>
+          <p>It is the cash left after tax, National Insurance, student loan and your own pension or Gift Aid payments, plus Child Benefit, minus the High Income Child Benefit Charge and childcare costs after any help. Pension money is saved, not spent, so the page also shows how much you add to your pension. Whether pension counts as "lost" is a personal choice, which is why both numbers are shown.</p>
+        </details>
+        <details>
+          <summary>What about the self employed, dividends and landlords?</summary>
+          <p>This explorer models employment income only. Dividends, interest and rental profits count towards adjusted net income and can drag you into the taper, and the self employed pay Class 4 National Insurance instead. The £100,000 rules apply to them in the same way, but the exact figures differ.</p>
+        </details>
+        <details>
+          <summary>Is this financial advice?</summary>
+          <p>No. It is an educational model with simplifying assumptions. Tax depends on your exact circumstances, tax codes, timing and how reliefs are claimed. Check figures against HMRC's own calculators or speak to a regulated adviser before making decisions, especially about pensions.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Built for the 2026/27 UK tax year. Figures are estimates for illustration and are not tax, legal or financial advice. Calculations run in your browser and no data leaves your device.</p>
+      <p class="small">Rates checked against GOV.UK, the Scottish Government and Coram in November 2026. Source code and tests are in the repository.</p>
+    </div>
+  </footer>
+
+  <script src="js/tax.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
